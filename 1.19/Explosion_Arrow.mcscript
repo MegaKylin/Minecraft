@@ -3,8 +3,7 @@
 {
     BlockState:{Name:"command_block"},
     TileEntityData:{Command:"/data merge block ~ ~-1 ~ {auto:0b}",auto:1b},
-    Passengers:
-    [
+    Passengers:[
         {
             id:armor_stand,
             Health:0,
