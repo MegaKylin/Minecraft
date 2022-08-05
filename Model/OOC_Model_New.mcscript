@@ -1,0 +1,63 @@
+// 掉落方块型OOC模板
+/summon minecraft:falling_block ~ ~8 ~ 
+{
+    BlockState:{Name:"repeating_command_block"},
+    TileEntityData:{Command:"/say Initializing..."},
+    Data:1,
+    Passengers:
+    [
+        {
+            id:armor_stand,
+            Health:0,
+            Passengers:
+            [
+                {id:falling_block,BlockState:{Name:"command_block"},Data:1,TileEntityData:{Command:"指令1",auto:1b},Passengers:[
+                {id:armor_stand,Health:0,Passengers:[
+                {id:falling_block,BlockState:{Name:"command_block"},Data:1,TileEntityData:{Command:"指令2",auto:1b},Passengers:[
+                {id:armor_stand,Health:0,Passengers:[
+                {id:falling_block,BlockState:{Name:"command_block"},Data:1,TileEntityData:{Command:"指令3",auto:1b},Passengers:[
+                {id:armor_stand,Health:0,Passengers:[
+                {id:falling_block,BlockState:{Name:"command_block"},Data:1,TileEntityData:{Command:"指令4",auto:1b},Passengers:[
+                ]}
+                ]}
+                ]}
+                ]}
+                ]}
+                ]}
+                ]}
+            ]
+        }
+    ]
+}
+
+
+// 矿车型OOC模板
+/summon minecraft:falling_block ~ ~1 ~ 
+{
+    BlockState:{Name:redstone_block},
+    Passengers:
+    [
+        {
+            id:armor_stand,
+            Health:0,
+            Passengers:
+            [
+                {
+                    id:falling_block,
+                    BlockState:{Name:activator_rail},
+                    Passengers:
+                    [
+                        {id:command_block_minecart,Command:"/gamerule commandBlockOutput false"},
+                        {id:command_block_minecart,Command:"/data merge block ~ ~-2 ~ {auto:0}"},
+                        {id:command_block_minecart,Command:"指令1"},
+                        {id:command_block_minecart,Command:"指令2"},
+                        {id:command_block_minecart,Command:"指令3"},
+                        {id:command_block_minecart,Command:"指令4"},
+                        {id:command_block_minecart,Command:"/setblock ~ ~1 ~ command_block{auto:1,Command:\"fill ~ ~ ~ ~ ~-2 ~ air\"}"},
+                        {id:command_block_minecart,Command:"/kill @e[type=command_block_minecart,distance=..1]"}
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+// 掉落方块型OOC模板
+/summon falling_block ~ ~1 ~ 
+{
+    Block:"command_block",
+    Data:1,
+    Time:1b,
+    TileEntityData:{auto:1b,Command:"指令1"},
+    Passengers:
+    [
+        {
+            id:"falling_block",
+            Block:"command_block",
+            Data:1,
+            Time:1b,
+            TileEntityData:{auto:1b,Command:"指令2"},
+            Passengers:
+            [
+                {
+                    id:"falling_block",
+                    Block:"command_block",
+                    Data:1,
+                    Time:1b,
+                    TileEntityData:{auto:1b,Command:"指令3"},
+                    Passengers:
+                    [
+                        {
+                            id:"falling_block",
+                            Block:"command_block",
+                            Data:1,
+                            Time:1b,
+                            TileEntityData:{auto:1b,Command:"指令4"},
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+// 矿车型OOC模板
+/summon falling_block ~ ~1 ~ 
+{
+    Block:"iron_block",
+    Time:1b,
+    Passengers:
+    [
+        {
+            id:"falling_block",
+            Block:"redstone_block",
+            Time:1b,
+            Passengers:
+            [
+                {
+                    id:"falling_block",
+                    Block:"activator_rail",
+                    Time:1b,
+                    Passengers:
+                    [
+                        {id:"commandblock_minecart",Command:"指令1"},
+                        {id:"commandblock_minecart",Command:"指令2"},
+                        {id:"commandblock_minecart",Command:"指令3"},
+                        {id:"commandblock_minecart",Command:"指令4"},
+                        {id:"commandblock_minecart",Command:"setblock ~ ~1 ~ command_block 1 replace {Command:\"fill ~ ~ ~ ~ ~-4 ~ air\",auto:1b}"},
+                        {id:"commandblock_minecart",Command:"kill @e[r=1,type=commandblock_minecart]"}
+                    ]
+                }
+            ]
+        }
+    ]
+}

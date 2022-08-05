@@ -1,0 +1,441 @@
+// on
+/summon MinecartCommandBlock ~2 ~ ~1
+{
+    CustomName : SeekerMinecraftPlayerMarker,
+    Command : "/kill @e[type=MinecartCommandBlock,r=0]",
+    Riding :
+    {
+        id : MinecartCommandBlock,
+        CustomName : SeekerMinecraftPlayerMarker,
+        Command : "/summon MinecartCommandBlock ~ ~1 ~ {CustomName : SeekerMinecraftPlayerMarker,Command : \"/scoreboard players set @a SMSetting 0\",Riding : {id : MinecartCommandBlock,CustomName : SeekerMinecraftPlayerMarker,Command : \"/scoreboard players set @a SMSetting 1 {Inventory : [{Slot : 103b,id : minecraft : diamond_helmet,tag : {display : {Name : \\\"Far View Helmet\\\"}}}]}\",Riding : {id : Bat,NoAI : 1b,PersistenceRequired : 1,CustomName : SeekerMinecraftPlayerMarker,ActiveEffects : [{Id : 20,Duration : 1000000,ShowParticles : false,Amplifier : 2}],HealF : 1,Silent : 1b}}}",
+        Riding :
+        {
+            id : MinecartCommandBlock,
+            CustomName : SeekerMinecraftPlayerMarker,
+            Command : "/stats block ~-2 ~-1 ~-1 set QueryResult @e[type=ArmorStand,name=SeekerMinecraftPlayerMarker] SMSetting",
+            Riding :
+            {
+                id : MinecartCommandBlock,
+                CustomName : SeekerMinecraftPlayerMarker,
+                Command : "/gamerule SeekerMinecraft 0",
+                Riding :
+                {
+                    id : MinecartCommandBlock,
+                    CustomName : SeekerMinecraftPlayerMarker,
+                    Command : "/scoreboard players set @e[type=ArmorStand,name=SeekerMinecraftPlayerMarker] SMSetting 0",
+                    Riding : 
+                    {
+                        id : MinecartCommandBlock,
+                        CustomName : SeekerMinecraftPlayerMarker,
+                        Command : "/scoreboard objectives add SMSetting dummy",
+                        Riding :
+                        {
+                            id : MinecartCommandBlock,
+                            CustomName : SeekerMinecraftPlayerMarker,
+                            Command : "/summon ArmorStand ~ ~ ~ {CustomName : SeekerMinecraftPlayerMarker,Invulnerable : 1b,Small : 1b,DisabledSlots : 31,NoGravity : 1b,NoBasePlate : 1b,Invisible : 1b,Marker : 1}",
+                            Riding :
+                            {
+                                id : MinecartCommandBlock,
+                                CustomName : SeekerMinecraftPlayerMarker,
+                                Command : "/execute @a ~ ~ ~ /playsound music.game @a ~ ~ ~ 1000 1.5",
+                                Riding :
+                                {
+                                    id : MinecartCommandBlock,
+                                    CustomName : SeekerMinecraftPlayerMarker,
+                                    Command : "/execute @a ~ ~ ~ /playsound mob.enderdragon.growl @a ~ ~ ~ 1000 2",
+                                    Riding :
+                                    {
+                                        id : MinecartCommandBlock,
+                                        CustomName : SeekerMinecraftPlayerMarker,
+                                        Command : "/setblock ~-2 ~2 ~-1 redstone_torch",
+                                        Riding :
+                                        {
+                                            id : MinecartCommandBlock,
+                                            CustomName : SeekerMinecraftPlayerMarker,
+                                            Command : "/setblock ~-1 ~-1 ~-1 redstone_block",
+                                            Riding :
+                                            {
+                                                id : MinecartCommandBlock,
+                                                CustomName : SeekerMinecraftPlayerMarker,
+                                                Command : "/setblock ~ ~1 ~-2 unpowered_comparator 1",
+                                                Riding :
+                                                {
+                                                    id : MinecartCommandBlock,
+                                                    CustomName : SeekerMinecraftPlayerMarker,
+                                                    Command : "/tellraw @a {text : \"[SM] Seeker Minecraft has now Begun.                                 \",color : green,extra : [{text : \"Seeker Minecraft | Version [1.1]                                       \",color : red},{text : \"Snowballs, FallingSand, and Players all load land!                 \",color : aqua},{text : \"Type /gamerule SeekerMinecraft 1 or 2                             to toggle reduced, faster mode (no water correction)         \",color : aqua},{text : \"Current mode is 2 - [reduced] (Every time the machine is       turned off, it is reset to 2)                                           \",color : green},{text : \"Name a diamond helmet \\\"Far View Helmet\\\" and wear it              to double the load radius! (will increase lag)                     \",color : aqua},{text : \"Created by \",color : gold},{text : \"[Ｏｎｎｏｗｈｅｒｅ]\",color : dark_purple,hoverEvent : {action : show_text,value : {text : \"Click to check out my Channel!\",color : dark_purple}},clickEvent : {action : open_url,value : \"https : //www.youtube.com/user/Onnowhere2\"}}]}",
+                                                    Riding :
+                                                    {
+                                                        id : MinecartCommandBlock,
+                                                        CustomName : SeekerMinecraftPlayerMarker,
+                                                        Command : "/gamerule logAdminCommands false",
+                                                        Riding :
+                                                        {
+                                                            id : MinecartCommandBlock,
+                                                            CustomName : SeekerMinecraftPlayerMarker,
+                                                            Command : "/gamerule commandBlockOutput false"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// clock
+/teleport @e[type = Villager, name = SeekerMinecraftPlayerMarker] ~ -770 ~
+
+/execute @a ~ ~ ~
+    /execute @a[, 129, , dy = 128, c = 1] ~ ~ ~
+        /summon Villager ~ ~-128 ~
+        {
+            Invulnerable : 1b, NoAI : 1b, Silent : 1b,
+            CustomName : SeekerMinecraftPlayerMarker,
+            ActiveEffects : [Id : 14, Amplifier : 1, Duration : 100000, ShowParticles : false],
+            PersistenceRequired : 1b
+        }
+
+// front-left-down redstone block // avoid falling out of world
+/fill ~-2 ~-130 ~-3 ~6 ~-122 ~3 air
+
+/execute @a ~ ~ ~
+    /teleport @p[, 0, , dy = 128, c = 1] ~ ~128 ~
+
+/execute @a ~ ~ ~
+    /execute @p[, 0, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-2 ~127 ~-2 ~2 ~127 ~2 stone 0 replace air
+
+// back-left-up redstone block // uncover map
+/execute @a[score_SMSetting_min = 1, score_SMSetting = 1] ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /clone ~-6 ~-131 ~-6 ~6 ~-124 ~6 ~-6 ~-3 ~-6 masked move
+
+/execute @e[type = ArmorStand, name = SeekerMinecraftPlayerMarker, score_SMSetting_min = 1, score_SMSetting = 1] ~ ~ ~
+    /summon MinecartCommandBlock ~ ~ ~
+    {
+        CustomName : SeekerMinecraftPlayerMarker,
+        Command : "/kill @e[type=MinecartCommandBlock,r=0]",
+        Riding : 
+        {
+            id : MinecartCommandBlock,
+            CustomName : SeekerMinecraftPlayerMarker,
+            Command : "/summon MinecartCommandBlock ~ ~1 ~ {CustomName : SeekerMinecraftPlayerMarker,Command : \"/scoreboard players set @a SMSetting 0\",
+            Riding : 
+            {
+                id : MinecartCommandBlock,
+                CustomName : SeekerMinecraftPlayerMarker,
+                Command : 
+                    \"/scoreboard players set @a SMSetting 1
+                    {
+                        Inventory : [
+                            {
+                                Slot : 103b,
+                                id : minecraft : diamond_helmet,
+                                tag : 
+                                {
+                                    display : 
+                                    {
+                                        Name : \\\"Far View Helmet\\\"
+                                    }
+                                }
+                            }
+                        ]
+                    }\",
+                Riding : 
+                {
+                    id : Bat,
+                    NoAI : 1b,
+                    PersistenceRequired : 1,
+                    CustomName : SeekerMinecraftPlayerMarker,
+                    ActiveEffects : [
+                        {
+                            Id : 20,
+                            Duration : 1000000,
+                            ShowParticles : false,
+                            Amplifier : 2
+                        }
+                    ],
+                    HealF : 1,
+                    Silent : 1b
+                }
+            }
+        }",
+        Riding : 
+        {
+            id : MinecartCommandBlock,
+            CustomName : SeekerMinecraftPlayerMarker,
+            Command : "/tellraw @a
+            {
+                text : \"[SM] Seeker Minecraft is now in unreduced, slower mode (water correcting)\",
+                color : red
+            }",
+            Riding : 
+            {
+                id : MinecartCommandBlock,
+                CustomName : SeekerMinecraftPlayerMarker,
+                Command : "/setblock ~2 ~-1 ~-1 redstone_block",
+                Riding : 
+                {
+                    id : MinecartCommandBlock,
+                    CustomName : SeekerMinecraftPlayerMarker,
+                    Command : "/gamerule SeekerMinecraft 0"
+                }
+            }
+        }
+    }
+}
+
+/execute @a[score_SMSetting_min = 1, score_SMSetting = 1] ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-6 130 ~-6 ~6 130 ~6 bedrock 0 keep
+
+/execute @e[type = ArmorStand, name = SeekerMinecraftPlayerMarker, score_SMSetting_min = 2, score_SMSetting = 2] ~ ~ ~
+    /summon MinecartCommandBlock ~ ~ ~
+    {
+        CustomName : SeekerMinecraftPlayerMarker,
+        Command : "/kill @e[type=MinecartCommandBlock,r=0]",
+        Riding : 
+        {
+            id : MinecartCommandBlock,
+            CustomName : SeekerMinecraftPlayerMarker,
+            Command : "/summon MinecartCommandBlock ~ ~1 ~
+            {
+                CustomName : SeekerMinecraftPlayerMarker,Command : \"/scoreboard players set @a SMSetting 0\",
+                Riding : 
+                {
+                    id : MinecartCommandBlock,
+                    CustomName : SeekerMinecraftPlayerMarker,
+                    Command : \"/scoreboard players set @a SMSetting 1
+                    {
+                        Inventory : [
+                            {
+                                Slot : 103b,
+                                id : minecraft : diamond_helmet,
+                                tag : 
+                                {
+                                    display : 
+                                    {
+                                        Name : \\\"Far View Helmet\\\"
+                                    }
+                                }
+                            }
+                        ]
+                    }\",
+                    Riding : 
+                    {
+                        id : Bat,
+                        NoAI : 1b,
+                        PersistenceRequired : 1,
+                        CustomName : SeekerMinecraftPlayerMarker,
+                        ActiveEffects : [
+                            {
+                                Id : 20,
+                                Duration : 1000000,
+                                ShowParticles : false,
+                                Amplifier : 2
+                                }
+                        ],
+                        HealF : 1,
+                        Silent : 1b
+                    }
+                }
+            }",
+            Riding : 
+            {
+                id : MinecartCommandBlock,
+                CustomName : SeekerMinecraftPlayerMarker,
+                Command : "/tellraw @a
+                {
+                    text : \"[SM] Seeker Minecraft is now in reduced, faster mode (non-water correcting)\",
+                    color : green
+                }",
+                Riding : 
+                {
+                    id : MinecartCommandBlock,
+                    CustomName : SeekerMinecraftPlayerMarker,
+                    Command : "/setblock ~2 ~-1 ~-1 stone",
+                    Riding : 
+                    {
+                        id : MinecartCommandBlock,
+                        CustomName : SeekerMinecraftPlayerMarker,
+                        Command : "/gamerule SeekerMinecraft 0"
+                    }
+                }
+            }
+        }
+    }
+
+
+// buttom redstone block & stone line
+//
+/gamerule SeekerMinecraft
+
+//
+/fill ~-1 ~-2 ~-1 ~4 ~1 ~ redstone_block 0 replace wool
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-20 129 ~-20 ~20 129 ~20 piston 0 keep
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-3 130 ~-3 ~3 130 ~3 bedrock 0 keep
+
+/ fill ~-1 ~ ~-1 ~4 ~3 ~ wool 0 replace redstone_block
+
+//
+/execute @e[type = !Player, name = !SeekerMinecraftPlayerMarker] ~ ~ ~ detect ~130 ~air -1
+    /teleport @e[, 129, , dy = 128, c = 1, type = !Player, name = !SeekerMinecraftPlayerMarker] ~ ~-128 ~
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~-10 0 ~-10
+        /entitydata @e[, , , dx = 20, dy = 255, dz = 20, type = !Player]
+        {
+            PersistenceRequired : 1b
+        }
+
+/entitydata @e[type = Snowball]
+{
+    CustomName : SeekerMinecraftEntity
+}
+
+/execute @e[type = !Player, name = !SeekerMinecraftPlayerMarker] ~ ~ ~ detect ~130 ~bedrock - 1
+    /teleport @e[, 0, , dy = 128, c = 1, type = !Player, name = !SeekerMinecraftPlayerMarker] ~ ~128 ~
+
+//
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        / fill ~-12 129 ~-12 ~12 129 ~12 piston 0 keep
+
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        /fill ~-3 130 ~-3 ~3 130 ~3 bedrock 0 keep
+
+/gamerule SeekerMinecraft 0
+
+/entitydata @e[type = FallingSand]
+{
+    CustomName : SeekerMinecraftEntity
+}
+
+//
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-8 ~-136 ~-8 ~8 ~-119 ~8 air 0 replace water
+
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        /fill ~-10 ~-138 ~-10 ~10 ~-117 ~10 barrier 0 replace water 0
+
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        /fill ~-8 ~-136 ~-8 ~8 ~-119 ~8 air 0 replace water
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-10 ~-138 ~-10 ~10 ~-117 ~10 barrier 0 replace water 0
+
+//
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        /clone ~-3 ~-131 ~-3 ~3 ~-124 ~3 ~-3 ~-3 ~-3 masked move
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /fill ~-6 ~-6 ~-6 ~6 ~7 ~6 water 0 replace barrier
+
+/execute @a ~ ~ ~
+    /execute @p[, 129, , dy = 128, c = 1] ~ ~ ~
+        /clone ~-3 ~-131 ~-3 ~3 ~-124 ~3 ~-3 ~-3 ~-3 masked move
+
+/execute @e[name = SeekerMinecraftEntity] ~ ~ ~
+    /execute @e[, 129, , dy = 128, c = 1, name = SeekerMinecraftEntity] ~ ~ ~
+        /fill ~-6 ~-6 ~-6 ~6 ~7 ~6 water 0 replace barrier
+
+// unknow
+/summon Item ~1 ~ ~
+{
+    Age : 5900s,
+    PickupDelay : 10000s,
+    Item : 
+    {
+        id : minecraft : redstone,
+        tag : 
+        {
+            ench : [],
+            display : 
+            {
+                Name : SeekerMinecraftPlayerMarker
+            }
+        }
+    }
+}
+
+/blockdata ~-3 ~ ~
+{
+    TransferCooldown : 900
+}
+
+/summon Item ~1 ~ ~
+{
+    Age : 5900s,
+    PickupDelay : 10000s,
+    Item : 
+    {
+        id : minecraft : redstone,
+        tag : 
+        {
+            ench : [],
+            display : 
+            {
+                Name : SeekerMinecraftPlayerMarker}
+        }
+    }
+}
+
+/summon MinecartCommandBlock ~2 ~-1 ~1
+
+// off
+{
+CustomName : 
+    SeekerMinecraftPlayerMarker, Command : "/kill @e[type=MinecartCommandBlock,r=0]", Riding : 
+    {
+    id : 
+        MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/execute @a ~ ~ ~ /playsound random.break @a ~ ~ ~ 1000 0", Riding : 
+        {
+        id : 
+            MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/setblock ~-2 ~2 ~-1 stone", Riding : 
+            {
+            id : 
+                MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/setblock ~-1 ~-1 ~-1 stone", Riding : 
+                {
+                id : 
+                    MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/setblock ~ ~1 ~-2 stone", Riding : 
+                    {
+                    id : 
+                        MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/tellraw @a {text : \"[SM] Seeker Minecraft has now Ended.\",color : red}", Riding : 
+                        {
+                        id : 
+                            MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/kill @e[type=ArmorStand,name=SeekerMinecraftPlayerMarker]", Riding : 
+                            {
+                            id : 
+                                MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/scoreboard objectives remove SMSetting", Riding : 
+                                {
+                                id : 
+                                    MinecartCommandBlock, CustomName : SeekerMinecraftPlayerMarker, Command : "/setblock ~2 ~-1 ~-1 stone"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

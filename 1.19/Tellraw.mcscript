@@ -1,0 +1,13 @@
+/tellraw @p {"text":"","extra":[{"text":"覆盖超链接的文本","color":"颜色","bold":"true","clickEvent":{"action":"open_url","value":"你的网址"}}]}
+
+/tellraw @p 
+{
+    "text":"Thanks for playing my frist OOC game in Minecraft 1.19! \nEnjoy! \nGithub: ",
+    "extra":
+    [{
+        "text":"https://www.mcbbs.net",
+        "color":"green",
+        "underlined":"true",
+        "clickEvent":{"action":"open_url","value":"https://www.mcbbs.net"}
+    }]
+}

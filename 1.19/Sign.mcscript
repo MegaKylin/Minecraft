@@ -1,0 +1,43 @@
+/give @p minecraft:oak_sign
+{
+    BlockEntityTag:
+    {
+        Text1:"[{\"text\":\"第1行文字\",\"color\":\"颜色\",\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"命令1\"}}]",
+        Text2:"[{\"text\":\"第2行文字\",\"color\":\"颜色\",\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"命令2\"}}]",
+        Text3:"[{\"text\":\"第3行文字\",\"color\":\"颜色\",\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"命令3\"}}]",
+        Text4:"[{\"text\":\"第4行文字\",\"color\":\"颜色\",\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"命令4\"}}]"
+    }
+}
+
+/setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
+{
+    Text2:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/say On\"}}]",
+}
+
+/setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
+{
+    Text2:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~-1 ~ ~2 {auto:1b}\"}}]",
+}
+
+/setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
+{
+    Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~-1 ~ ~2 {auto:1b}\"}}]",
+    Text2:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run say On\"}}]",
+    Text3:"[{\"text\":\"∨\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+    Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/setblock\"}}]"
+}
+
+/setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
+{
+    Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~1 ~ ~2 {auto:0b}\"}}]",
+    Text2:"[{\"text\":\"∧\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run say Off\"}}]",
+    Text3:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+    Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/setblock\"}}]"
+}
+
+/setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
+{
+    Text1:"[{\"text\":\"\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run fill ~ ~ ~-1 ~2 ~4 ~3 minecraft:air\"}}]",
+    Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"]\"}}]",
+    Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+}
