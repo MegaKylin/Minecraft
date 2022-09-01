@@ -271,12 +271,13 @@
     run setblock ~8 ~1 ~1 minecraft:oak_wall_sign[facing=east]
     {
         Text1:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~-1 ~ ~-1 ~8 ~6 ~4 minecraft:air\"}}]",
-        Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",
-        Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"
+        Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=item,nbt={Item:{id:\\\"minecraft:oak_sign\\\"}},distance=..16]\"}}]",
+        Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",
+        Text4:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.5 0.4\"}}]"
     }
 
 //
-/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~8 ~1 ~1 minecraft:oak_wall_sign[facing=east]{Text1:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~-1 ~ ~-1 ~8 ~6 ~4 minecraft:air\"}}]",Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"}
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~8 ~1 ~1 minecraft:oak_wall_sign[facing=east]{Text1:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~-1 ~ ~-1 ~8 ~6 ~4 minecraft:air\"}}]",Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=item,nbt={Item:{id:\\\"minecraft:oak_sign\\\"}},distance=..16]\"}}]",Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",Text4:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.5 0.4\"}}]"}
 //
 
 // information
