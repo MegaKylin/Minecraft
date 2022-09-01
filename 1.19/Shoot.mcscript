@@ -1,0 +1,28 @@
+// SelectedItem Explosion Arrow (mainhand)
+/execute if entity @p[nbt={SelectedItem:{tag:{Tags:["QF"]}}}]
+
+// get tag
+/execute if entity @p[nbt={Inventory:[{Slot:-106b,id:"minecraft:tipped_arrow",tag:{Tags:["EA"]}}]}]
+/execute as @p[nbt={Inventory:[{Slot:-106b,id:"minecraft:tipped_arrow",tag:{Tags:["EA"]}}]}] at @s run tag @s add EAP
+/execute as @p[tag=EAP] at @s run tag @e[type=minecraft:arrow,nbt={inGround:0b},distance=..2] add EA
+
+// detect flying arrow
+/execute if entity @e[type=minecraft:arrow,tag=EA,nbt={inGround:0b}]
+/execute as @e[type=minecraft:arrow,tag=EA,nbt={inGround:0b}] at @s if entity @e[type=!minecraft:arrow,type=!minecraft:player,type=!minecraft:item,distance=..4] run summon minecraft:creeper ~ ~ ~ {Fuse:0b}
+/execute as @e[type=minecraft:arrow,tag=EA,nbt={inGround:0b}] at @s if entity @e[type=!minecraft:arrow,type=!minecraft:player,type=!minecraft:item,distance=..4] run summon minecraft:lightning_bolt ~ ~ ~
+/execute as @e[type=minecraft:arrow,tag=EA,nbt={inGround:0b}] at @s if entity @e[type=!minecraft:arrow,type=!minecraft:player,type=!minecraft:item,distance=..4] run kill @s
+/tag @p[nbt=!{Inventory:[{Slot:-106b,id:"minecraft:tipped_arrow",tag:{Tags:["EA"]}}]}] remove EAP
+
+// detect effect
+/execute if entity @p[tag=EAP] if entity @e[nbt={ActiveEffects:[{Id:23}]}]
+/execute as @e[nbt={ActiveEffects:[{Id:23}]}] at @s run summon minecraft:creeper ~ ~ ~ {Fuse:0b}
+/execute as @e[nbt={ActiveEffects:[{Id:23}]}] at @s run summon minecraft:lightning_bolt ~ ~ ~
+/tag @p[nbt=!{Inventory:[{Slot:-106b,id:"minecraft:tipped_arrow",tag:{Tags:["EA"]}}]}] remove EAP
+
+// detect inground arrow
+/execute if entity @e[type=minecraft:arrow,tag=EA,nbt={inGround:1b}]
+/execute as @e[type=minecraft:arrow,tag=EA,nbt={inGround:1b}] at @s run summon minecraft:creeper ~ ~ ~ {Fuse:0b}
+/execute as @e[type=minecraft:arrow,tag=EA,nbt={inGround:1b}] at @s run summon minecraft:lightning_bolt ~ ~ ~
+// /execute as @p[tag=EAP] run kill @e[type=minecraft:arrow,tag=EA,nbt={inGround:1b}]
+/kill @e[type=minecraft:arrow,tag=EA,nbt={inGround:1b}]
+/tag @p[nbt=!{Inventory:[{Slot:-106b,id:"minecraft:tipped_arrow",tag:{Tags:["EA"]}}]}] remove EAP

@@ -1,3 +1,4 @@
+// model
 /give @p minecraft:oak_sign
 {
     BlockEntityTag:
@@ -19,25 +20,275 @@
     Text2:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~-1 ~ ~2 {auto:1b}\"}}]",
 }
 
+// Explosion System Switch Alpha
+// Off
 /setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
 {
     Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~-1 ~ ~2 {auto:1b}\"}}]",
     Text2:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run say On\"}}]",
-    Text3:"[{\"text\":\"∨\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+    Text3:"[{\"text\":\"∨\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]",
     Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/setblock\"}}]"
 }
-
+// On
 /setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
 {
     Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/data merge block ~1 ~ ~2 {auto:0b}\"}}]",
     Text2:"[{\"text\":\"∧\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run say Off\"}}]",
-    Text3:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+    Text3:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]",
     Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/setblock\"}}]"
 }
-
+// Destory
 /setblock ~ ~ ~ minecraft:oak_wall_sign[facing=north]
 {
     Text1:"[{\"text\":\"\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"] run fill ~ ~ ~-1 ~2 ~4 ~3 minecraft:air\"}}]",
     Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,name=\\\"Explosion Arrow System\\\"]\"}}]",
-    Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1 0.4\"}}]",
+    Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]",
 }
+
+// Explosion System Switch
+// Off
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~4 ~1 minecraft:red_wool   
+    run setblock ~-1 ~1 ~3 minecraft:oak_wall_sign[facing=west]
+    {
+        Text1:"[{\"text\":\"On\",\"color\":\"dark_green\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~4 ~3 ~1 ~4 ~5 ~2 minecraft:lime_wool\"}}]",
+        Text2:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say On\"}}]",
+        Text3:"[{\"text\":\"∨\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.8 0.4\"}}]",
+        Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~-1 ~1 ~3 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~4 ~1 minecraft:red_woo run setblock ~-1 ~1 ~3 minecraft:oak_wall_sign[facing=west]{Text1:"[{\"text\":\"On\",\"color\":\"dark_green\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~4 ~3 ~1 ~4 ~5 ~2 minecraft:lime_wool\"}}]",Text2:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say On\"}}]",Text3:"[{\"text\":\"∨\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.8 0.4\"}}]",Text4:"[{\"text\":\"Off\",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~-1 ~1 ~3 minecraft:air\"}}]"}
+//
+
+// On
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~4 ~1 minecraft:lime_wool  
+    run setblock ~-1 ~1 ~3 minecraft:oak_wall_sign[facing=west]
+    {
+        Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~4 ~3 ~1 ~4 ~5 ~2 minecraft:red_wool\"}}]",
+        Text2:"[{\"text\":\"∧\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Off\"}}]",
+        Text3:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"Off\",\"color\":\"dark_red\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~-1 ~1 ~3 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~4 ~1 minecraft:lime_woo run setblock ~-1 ~1 ~3 minecraft:oak_wall_sign[facing=west]{Text1:"[{\"text\":\"On\",\"color\":\"green\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~4 ~3 ~1 ~4 ~5 ~2 minecraft:red_wool\"}}]",Text2:"[{\"text\":\"∧\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Off\"}}]",Text3:"[{\"text\":\"|\",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"Off\",\"color\":\"dark_red\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~-1 ~1 ~3 minecraft:air\"}}]"}
+//
+
+// Effects Explosion Switch
+// Off
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~1 minecraft:red_wool  
+    run setblock ~1 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~1 minecraft:lime_wool\"}}]",
+        Text2:"[{\"text\":\"Explosion:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Explosion - On\"}}]",
+        Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~1 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~1 minecraft:red_woo run setblock ~1 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~1 minecraft:lime_wool\"}}]",Text2:"[{\"text\":\"Explosion:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Explosion - On\"}}]",Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~1 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// On
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~1 minecraft:lime_wool  
+    run setblock ~1 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~1 minecraft:red_wool\"}}]",
+        Text2:"[{\"text\":\"Explosion:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Explosion - Off\"}}]",
+        Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~1 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~1 minecraft:lime_woo run setblock ~1 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~1 minecraft:red_wool\"}}]",Text2:"[{\"text\":\"Explosion:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Explosion - Off\"}}]",Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~1 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// Effects Lightning Switch
+// Off
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~2 minecraft:red_wool  
+    run setblock ~2 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~2 minecraft:lime_wool\"}}]",
+        Text2:"[{\"text\":\"Lightning:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Lightning - On\"}}]",
+        Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~2 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~2 minecraft:red_woo run setblock ~2 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~2 minecraft:lime_wool\"}}]",Text2:"[{\"text\":\"Lightning:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Lightning - On\"}}]",Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~2 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// On
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~2 minecraft:lime_wool  
+    run setblock ~2 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~2 minecraft:red_wool\"}}]",
+        Text2:"[{\"text\":\"Lightning:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Lightning - Off\"}}]",
+        Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+            ext4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~2 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~2 ~2 minecraft:lime_woo run setblock ~2 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~2 ~2 minecraft:red_wool\"}}]",Text2:"[{\"text\":\"Lightning:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Lightning - Off\"}}]",Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~2 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// Effects Griefing Switch
+// Off
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~1 minecraft:red_wool  
+    run setblock ~3 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~1 minecraft:lime_wool\"}}]",
+        Text2:"[{\"text\":\"Griefing:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Griefing - On\"}}]",
+        Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~3 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~1 minecraft:red_woo run setblock ~3 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~1 minecraft:lime_wool\"}}]",Text2:"[{\"text\":\"Griefing:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Griefing - On\"}}]",Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~3 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// On
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~1 minecraft:lime_wool  
+    run setblock ~3 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~1 minecraft:red_wool\"}}]",
+        Text2:"[{\"text\":\"Griefing:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Griefing - Off\"}}]",
+        Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~3 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~1 minecraft:lime_woo run setblock ~3 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~1 minecraft:red_wool\"}}]",Text2:"[{\"text\":\"Griefing:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Effects: Griefing - Off\"}}]",Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~3 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// Functions Crafting Switch
+// Off
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~2 minecraft:red_wool  
+    run setblock ~6 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~2 minecraft:lime_wool\"}}]",
+        Text2:"[{\"text\":\"Crafting:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Functions: Crafting - On\"}}]",
+        Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~6 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~2 minecraft:red_woo run setblock ~6 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~2 minecraft:lime_wool\"}}]",Text2:"[{\"text\":\"Crafting:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Functions: Crafting - On\"}}]",Text3:"[{\"text\":\"Off\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~6 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// On
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~2 minecraft:lime_wool  
+    run setblock ~6 ~1 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~2 minecraft:red_wool\"}}]",
+        Text2:"[{\"text\":\"Crafting:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Functions: Crafting - Off\"}}]",
+        Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",
+        Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~6 ~1 ~4 minecraft:air\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s if block ~4 ~1 ~2 minecraft:lime_woo run setblock ~6 ~1 ~4 minecraft:oak_wall_sign[facing=south]{Text1:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~4 ~1 ~2 minecraft:red_wool\"}}]",Text2:"[{\"text\":\"Crafting:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=armor_stand,tag=EAS] run say Functions: Crafting - Off\"}}]",Text3:"[{\"text\":\"On\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 0.7 0.4\"}}]",Text4:"[{\"text\":\"---------------\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run setblock ~6 ~1 ~4 minecraft:air\"}}]"}
+//
+
+// System State
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~-1 ~2 ~3 minecraft:oak_wall_sign[facing=west]
+    {
+        Text2:"[{\"text\":\"System State:\",\"color\":\"dark_blue\"}]",
+        Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~-1 ~2 ~3 minecraft:oak_wall_sign[facing=west]{Text2:"[{\"text\":\"System State:\",\"color\":\"dark_blue\"}]",Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"}
+//
+
+// Effects
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~2 ~2 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text2:"[{\"text\":\"Effects:\",\"color\":\"yellow\"}]",
+        Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~2 ~2 ~4 minecraft:oak_wall_sign[facing=south]{Text2:"[{\"text\":\"Effects:\",\"color\":\"yellow\"}]",Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"}
+//
+
+// Functions
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~6 ~2 ~4 minecraft:oak_wall_sign[facing=south]
+    {
+        Text2:"[{\"text\":\"Functions:\",\"color\":\"yellow\"}]",
+        Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~6 ~2 ~4 minecraft:oak_wall_sign[facing=south]{Text2:"[{\"text\":\"Functions:\",\"color\":\"yellow\"}]",Text3:"[{\"text\":\"∨\",\"color\":\"black\"}]"}
+//
+
+// item get
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~1 ~1 ~-1 minecraft:oak_wall_sign[facing=north]
+    {
+        Text1:"[{\"text\":\"Get Items:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=minecraft:armor_stand,tag=EAS] run say Activate the Explosion Arrow by placing it on the Offhand! Enjoy! \"}}]",
+        Text2:"[{\"text\":\"Unbreakable Bow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:bow{Unbreakable:1b} 1\"}}]",
+        Text3:"[{\"text\":\"Explosion Arrow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:tipped_arrow{display:{Name:\\\"{\\\\\\\"translate\\\\\\\":\\\\\\\"Explosion Arrow\\\\\\\"}\\\"},Tags:[\\\"EA\\\"],Enchantments:[{id:\\\"explosion\\\"}],CustomPotionEffects:[{Id:23,Duration:0,Amplifier:0,ShowParticles:0,ShowIcon:0}]} 1\"}}]",
+        Text4:"[{\"text\":\"For Creative Only\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~1 ~1 ~-1 minecraft:oak_wall_sign[facing=north]{Text1:"[{\"text\":\"Get Items:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=minecraft:armor_stand,tag=EAS] run say Activate the Explosion Arrow by placing it on the Offhand! Enjoy! \"}}]",Text2:"[{\"text\":\"Unbreakable Bow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:bow{Unbreakable:1b} 1\"}}]",Text3:"[{\"text\":\"Explosion Arrow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:tipped_arrow{display:{Name:\\\"{\\\\\\\"translate\\\\\\\":\\\\\\\"Explosion Arrow\\\\\\\"}\\\"},Tags:[\\\"EA\\\"],Enchantments:[{id:\\\"explosion\\\"}],CustomPotionEffects:[{Id:23,Duration:0,Amplifier:0,ShowParticles:0,ShowIcon:0}]} 1\"}}]",Text4:"[{\"text\":\"For Creative Only\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"}
+//
+
+// create table get
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~2 ~1 ~-1 minecraft:oak_wall_sign[facing=north]
+    {
+        Text1:"[{\"text\":\"Get Create Table:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=minecraft:armor_stand,tag=EAS] run say Throw an Arrow and a TNT together to craft an Explosion Arrow. \"}}]",
+        Text2:"[{\"text\":\"Arrow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:arrow 1\"}}]",
+        Text3:"[{\"text\":\"TNT\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:tnt 1\"}}]",
+        Text4:"[{\"text\":\"For Creative Only\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~2 ~1 ~-1 minecraft:oak_wall_sign[facing=north]{Text1:"[{\"text\":\"Get Create Table:\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute as @e[type=minecraft:armor_stand,tag=EAS] run say Throw an Arrow and a TNT together to craft an Explosion Arrow. \"}}]",Text2:"[{\"text\":\"Arrow\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:arrow 1\"}}]",Text3:"[{\"text\":\"TNT\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/give @p[gamemode=creative,distance=..4] minecraft:tnt 1\"}}]",Text4:"[{\"text\":\"For Creative Only\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"}
+//
+
+// Test Iron_Golem
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~6 ~1 ~-1 minecraft:oak_wall_sign[facing=north]
+    {
+        Text2:"[{\"text\":\"Test Mob:\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/summon minecraft:iron_golem ~-2 ~ ~-1\"}}]",
+        Text3:"[{\"text\":\"Iron Golem\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~6 ~1 ~-1 minecraft:oak_wall_sign[facing=north]{Text2:"[{\"text\":\"Test Mob:\",\"color\":\"black\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/summon minecraft:iron_golem ~-2 ~ ~-1\"}}]",Text3:"[{\"text\":\"Iron Golem\",\"color\":\"red\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"}
+//
+
+// Destory
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~8 ~1 ~1 minecraft:oak_wall_sign[facing=east]
+    {
+        Text1:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~-1 ~ ~-1 ~8 ~6 ~4 minecraft:air\"}}]",
+        Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",
+        Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~8 ~1 ~1 minecraft:oak_wall_sign[facing=east]{Text1:"[{\"text\":\"\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute at @e[type=armor_stand,tag=EAS] run fill ~-1 ~ ~-1 ~8 ~6 ~4 minecraft:air\"}}]",Text2:"[{\"text\":\"Caution! \",\"color\":\"red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/kill @e[type=armor_stand,tag=EAS]\"}}]",Text3:"[{\"text\":\"Destory\",\"color\":\"blue\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:ui.button.click player @p ~ ~ ~ 0.5 1.0 0.4\"}}]"}
+//
+
+// information
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~-1 ~1 ~ minecraft:oak_wall_sign[facing=west]
+    {
+        Text1:"[{\"text\":\"Explosion\",\"color\":\"dark_red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"Explosion Arrow\\\\n\\\",\\\"color\\\":\\\"red\\\",\\\"bold\\\":\\\"true\\\",\\\"extra\\\":[{\\\"text\\\":\\\"Made by MageKylin\\\\n\\\",\\\"color\\\":\\\"blue\\\",\\\"bold\\\":\\\"false\\\"}]}\"}}]",
+        Text2:"[{\"text\":\"Arrow\",\"color\":\"dark_red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"Thanks for playing my frist OOC game in Minecraft 1.19! \\\\n\\\",\\\"color\\\":\\\"white\\\",\\\"extra\\\":[{\\\"text\\\":\\\"Enjoy! \\\\n\\\",\\\"color\\\":\\\"yellow\\\"}]}\"}}]",
+        Text3:"[{\"text\":\"Made By: \",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"GitHub: \\\",\\\"color\\\":\\\"white\\\",\\\"bold\\\":\\\"true\\\",\\\"extra\\\":[{\\\"text\\\":\\\"https:\\\\/\\\\/github.com/MegaKylin?tab=repositories\\\\n\\\\n\\\\n\\\",\\\"color\\\":\\\"green\\\",\\\"bold\\\":\\\"false\\\",\\\"underlined\\\":\\\"true\\\",\\\"clickEvent\\\":{\\\"action\\\":\\\"open_url\\\",\\\"value\\\":\\\"https:\\\\/\\\\/github.com/MegaKylin?tab=repositories\\\"}}]}\"}}]",
+        Text4:"[{\"text\":\"MegaKylin\",\"color\":\"blue\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:entity.item.pickup player @p ~ ~ ~ 0.5 1.0 0.5\"}}]"
+    }
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~-1 ~1 ~ minecraft:oak_wall_sign[facing=west]{Text1:"[{\"text\":\"Explosion\",\"color\":\"dark_red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"Explosion Arrow\\\\n\\\",\\\"color\\\":\\\"red\\\",\\\"bold\\\":\\\"true\\\",\\\"extra\\\":[{\\\"text\\\":\\\"Made by MageKylin\\\\n\\\",\\\"color\\\":\\\"blue\\\",\\\"bold\\\":\\\"false\\\"}]}\"}}]",Text2:"[{\"text\":\"Arrow\",\"color\":\"dark_red\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"Thanks for playing my frist OOC game in Minecraft 1.19! \\\\n\\\",\\\"color\\\":\\\"white\\\",\\\"extra\\\":[{\\\"text\\\":\\\"Enjoy! \\\\n\\\",\\\"color\\\":\\\"yellow\\\"}]}\"}}]",Text3:"[{\"text\":\"Made By: \",\"color\":\"black\",\"bold\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/tellraw @p {\\\"text\\\":\\\"GitHub: \\\",\\\"color\\\":\\\"white\\\",\\\"bold\\\":\\\"true\\\",\\\"extra\\\":[{\\\"text\\\":\\\"https:\\\\/\\\\/github.com/MegaKylin?tab=repositories\\\\n\\\\n\\\\n\\\",\\\"color\\\":\\\"green\\\",\\\"bold\\\":\\\"false\\\",\\\"underlined\\\":\\\"true\\\",\\\"clickEvent\\\":{\\\"action\\\":\\\"open_url\\\",\\\"value\\\":\\\"https:\\\\/\\\\/github.com/MegaKylin?tab=repositories\\\"}}]}\"}}]",Text4:"[{\"text\":\"MegaKylin\",\"color\":\"blue\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/playsound minecraft:entity.item.pickup player @p ~ ~ ~ 0.5 1.0 0.5\"}}]"}
+//

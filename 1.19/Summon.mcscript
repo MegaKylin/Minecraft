@@ -1,0 +1,36 @@
+// Explosion Arrow System Armor_Stand
+/summon minecraft:armor_stand ~4 ~ ~4 
+{
+    CustomName:"{\"text\":\"Explosion Arrow System\"}",
+    Tags:["EAS"],
+    Facing:east,
+    Invisible:1b,
+    NoGravity:1b,
+    Invulnerable:1b
+}
+
+//
+/summon minecraft:armor_stand ~4 ~ ~4 {CustomName:"{\"text\":\"Explosion Arrow System\"}",Tags:["EAS"],Invisible:1b,NoGravity:1b,Invulnerable:1b}
+//
+
+// Armor_Stand rotate
+/execute as @e[type=minecraft:armor_stand,distance=..2] at @s rotated ~1 ~ 
+    run tp ~ ~ ~
+
+//
+/execute as @e[type=minecraft:armor_stand,distance=..2] at @s rotated ~1 ~ run tp ~ ~ ~
+//
+
+// creeper with lightning
+/summon minecraft:creeper ~ ~ ~ 
+{
+    Passengers:
+    [
+        {id:lightning_bolt}
+    ],
+    Fuse:0
+}
+
+//
+/summon minecraft:creeper ~ ~ ~ {Passengers:[{id:lightning_bolt}],Fuse:0}
+//

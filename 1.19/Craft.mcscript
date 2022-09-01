@@ -1,0 +1,99 @@
+// testfor arrow
+// Alpha
+/execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}]
+    at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}] run execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}},distance=..0.5]
+        at @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}}] run tag @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},distance=..0.5] add craft
+
+//
+/execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}] at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}] run execute if entity @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}},distance=..0.5] at @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}}] run tag @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},distance=..0.5] add craft
+//
+
+// Now
+/execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}] at @s 
+    run execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}},distance=..0.5] at @s 
+        run tag @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},distance=..0.5] add craft
+
+//
+/execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",Count:1b}}] at @s run execute as @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt",Count:1b}},distance=..0.5] at @s run tag @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},distance=..0.5] add craft
+//
+
+// summon Explosion Arrow
+// arrow
+/execute at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft]
+    run summon minecraft:item ~ ~ ~ 
+        {
+            Item:
+            {
+                id:"minecraft:arrow",
+                tag:
+                {
+                    display:{Name:"{\"translate\":\"Explosion Arrow\"}"},
+                    Tags:["EA"],
+                    Unbreakable:1b,
+                    Enchantments:
+                    [
+                        {id:"explosion"},
+                    ]
+                },
+                Count:1b
+            },
+            Invulnerable:1b,
+            Age:-32768
+        }
+
+//
+/execute at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft] run summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:arrow",tag:{display:{Name:"{\"translate\":\"Explosion Arrow\"}"},Tags:["EA"],Unbreakable:1b,Enchantments:[{id:"explosion"}]},Count:1b},Invulnerable:1b,Age:-32768}
+//
+
+// tipped_arrow
+/summon minecraft:item ~ ~ ~ 
+{
+    Item:
+    {
+        id:"minecraft:tipped_arrow",
+        tag:
+        {
+            display:{Name:"{\"translate\":\"Explosion Arrow\"}"},
+            Tags:["EA"],
+            // Damage:1,
+            // Unbreakable:1b,
+            Enchantments:
+            [
+                {id:"explosion"}
+            ],
+            CustomPotionEffects:
+            [
+                {Id:23,Duration:0,Amplifier:0,ShowParticles:0b,ShowIcon:0b}
+            ],
+            // pickup:0b
+        },
+        Count:1b
+    },
+    Invulnerable:1b,
+    Age:-32768s
+}
+
+//
+/execute at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft] run summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:tipped_arrow",tag:{display:{Name:"{\"translate\":\"Explosion Arrow\"}"},Tags:["EA"],Enchantments:[{id:"explosion"}],CustomPotionEffects:[{Id:23,Duration:0,Amplifier:0,ShowParticles:0,ShowIcon:0}]},Count:1b},Invulnerable:1b,Age:-32768}
+//
+
+// kill
+/execute at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft]
+    run kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt"}},distance=..0.5]
+
+//
+/execute at @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft] run kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:tnt"}},distance=..0.5]
+//
+
+/kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft]
+
+//
+/kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}},tag=craft]
+//
+
+// other AttributeModifiers
+// model
+{AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"Attack_Damage",Operation:0,Amount:-20d,Slot:"offhand",UUID:[I;7,0,0,0]}]}
+// example
+/give @s diamond_axe{AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"Attack_Damage",Operation:0,Amount:20d,Slot:"mainhand",UUID:[I;7,0,0,0]}]}
+/give @s minecraft:elytra{AttributeModifiers:[{AttributeName:"generic.armor",Name:"Armor",Operation:0,Amount:20d,Slot:"chest",UUID:[I;7,0,0,0]}]}

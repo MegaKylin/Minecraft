@@ -11,3 +11,7 @@
         "clickEvent":{"action":"open_url","value":"https://www.mcbbs.net"}
     }]
 }
+
+//
+/tellraw @p {"text":"Thanks for playing my frist OOC game in Minecraft 1.19! \nEnjoy! \nGithub: ","extra":[{"text":"https://www.mcbbs.net","color":"green","underlined":"true","clickEvent":{"action":"open_url","value":"https://www.mcbbs.net"}}]}
+//

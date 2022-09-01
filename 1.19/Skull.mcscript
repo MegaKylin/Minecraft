@@ -1,0 +1,15 @@
+// MegaKylin
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~-1 ~1 ~1 minecraft:player_wall_head[facing=west]{SkullOwner:{Name:"MegaKylin"}}
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~-1 ~1 ~1 minecraft:player_wall_head[facing=west]{SkullOwner:{Name:"MegaKylin"}}
+//
+
+// Exclamation
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s 
+    run setblock ~8 ~1 ~2 minecraft:player_wall_head[facing=east]{SkullOwner:{Name:"MHF_Exclamation"}}
+
+//
+/execute as @e[type=minecraft:armor_stand,tag=EAS] at @s run setblock ~8 ~1 ~2 minecraft:player_wall_head[facing=east]{SkullOwner:{Name:"MHF_Exclamation"}}
+//
